@@ -9,7 +9,15 @@ const methodOverride=require('method-override');
 const session=require('express-session');
 const flash=require('connect-flash');
 const {locals}=require('./middleware');
+const authRoutes=require('./routes/authRoutes');
 const port=3000;
+const passport=require('passport');
+const LocalStrategy=require('passport-local');
+
+const User = require('./model/user');
+passport.use(new LocalStrategy(User.authenticate()));
+passport.serializeUser(User.serializeUser());
+passport.deserializeUser(User.deserializeUser());
 
 app.use(session({
   secret: 'Secret Daily Journal',
@@ -17,6 +25,7 @@ app.use(session({
   saveUninitialized: true,
   cookie: {}
 }))
+app.use(passport.session());
 
 app.engine('ejs',engine);
 app.set('view engine','ejs');
@@ -34,6 +43,7 @@ mongoose.connect('mongodb://127.0.0.1:27017/DailyJournal').then(()=>{
 });
 
 app.use(router);
+app.use(authRoutes);
 
 app.get('/',(req,res)=>{
     res.redirect('/journal');

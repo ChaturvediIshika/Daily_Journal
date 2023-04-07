@@ -1,11 +1,9 @@
 <% layout('layout/boilerplate')-%>
 
 <div class="row">
-    <%-include('../partials/flash')%>
     <div class="col-lg-6 mx-auto">
-        
-        <h1>SignUp</h1><br>
-        <form action="/register" method="POST">
+        <h1>LogIn</h1><br>
+        <form action="/login" method="POST">
             <div class="mb-3">
                 <label class="form-label" for="username">UserName:</label>
                 <input class="form-control" type="text" name="username" id="username" required>
@@ -14,12 +12,7 @@
                 <label class="form-label" for="password">Password:</label>
                 <input class="form-control" type="password" name="password" id="password" required>
             </div>
-            <div class="mb-3">
-                <label class="form-label" for="email">Email:</label>
-                <input class="form-control" type="email" name="email" id="email" required>
-            </div>
-            
-            <button type="submit" class="btn btn-primary">SignUp</button>
+            <button type="submit" class="btn btn-dark">LogIn</button>
         </form>
     </div>
 </div>
