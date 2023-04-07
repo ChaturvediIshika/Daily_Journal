@@ -27,7 +27,10 @@ app.use(methodOverride('_method'));
 app.use(flash());
 app.use(locals);
 
-mongoose.connect('mongodb://127.0.0.1:27017/DailyJournal').then(()=>{
+dburl1="mongodb+srv://cishika104:doraemon1234@cluster0.zsj2ef2.mongodb.net/DailyJournal";
+dburl2='mongodb://127.0.0.1:27017/DailyJournal';
+
+mongoose.connect(dburl1).then(()=>{
     console.log("db connected");
 }).catch(()=>{
     console.log(err);
