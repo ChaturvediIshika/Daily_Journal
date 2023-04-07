@@ -8,7 +8,7 @@ const home="Lorem Ipsum is simply dummy text of the printing and typesetting ind
 // posts.push({postTitle:"home",pp:home});
 
 router.get('/journal',async(req,res)=>{
-    const posts=await Journal.find({});
+    const posts=await Journal.find({}).populate('creator');
     res.render('journal/index',{posts});
 })
 
@@ -26,7 +26,7 @@ router.get('/journal/compose',isLoggedIn,(req,res)=>{
 
 router.post('/journal/compose',isLoggedIn,async(req,res)=>{
     const {postTitle,pp}=req.body;
-    await Journal.create({postTitle,pp});
+    await Journal.create({postTitle,pp,'creator':req.user.id});
     req.flash('msg','Journal Added Successfully');
     res.redirect('/journal');
 })
@@ -34,7 +34,7 @@ router.post('/journal/compose',isLoggedIn,async(req,res)=>{
 router.get('/journal/show/:id',isLoggedIn,async(req,res)=>{
     try{
     const {id}=req.params;
-    const post=await Journal.findById(id);
+    const post=await Journal.findById(id).populate('creator');
     res.render('journal/readMore',{post});
     }
     catch(err){
