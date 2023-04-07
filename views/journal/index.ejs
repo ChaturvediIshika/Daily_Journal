@@ -5,7 +5,7 @@
     <%for(let p of posts){%>
         <div class="mt-2 mb-2">
             <h2><%=p.postTitle%></h2>
-            <p><%=p.pp.substring(0,400)%>...<a href="/journal/show/<%=p.id%>">ReadMore</a></p>
+            <p><%=p.pp.substring(0,400)%>... <a href="/journal/show/<%=p.id%>"> ReadMore</a></p>
             
         </div>
     <%}%>

@@ -26,6 +26,7 @@ router.get('/journal/compose',(req,res)=>{
 router.post('/journal/compose',async(req,res)=>{
     const {postTitle,pp}=req.body;
     await Journal.create({postTitle,pp});
+    req.flash('msg','Journal Added Successfully');
     res.redirect('/journal');
 })
 
@@ -50,12 +51,14 @@ router.post('/journal/edit/:id',async(req,res)=>{
     const {id}=req.params;
     const {postTitle,pp}=req.body;
     await Journal.findByIdAndUpdate(id,{postTitle,pp});
+    req.flash('msg','update successful');
     res.redirect(`/journal/show/${id}`);
 })
 
 router.delete('/journal/:id',async(req,res)=>{
     const {id}=req.params;
     await Journal.findByIdAndDelete(id);
+    req.flash('err','deleted successfully');2
     res.redirect('/journal');
 })
 
