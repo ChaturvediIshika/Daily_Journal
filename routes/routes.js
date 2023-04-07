@@ -63,4 +63,9 @@ router.delete('/journal/:id',isLoggedIn,async(req,res)=>{
     res.redirect('/journal');
 })
 
+router.get('/journal/myjournals',isLoggedIn,async(req,res)=>{
+    const posts=await Journal.find({'creator':req.user.id}).populate('creator');
+    res.render('journal/myjournals',{posts});
+})
+
 module.exports=router;

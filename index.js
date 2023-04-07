@@ -13,17 +13,34 @@ const authRoutes=require('./routes/authRoutes');
 const port=3000;
 const passport=require('passport');
 const LocalStrategy=require('passport-local');
+const MongoDBStore = require('express-mongodb-session')(session);
+
+dburl1="mongodb+srv://cishika104:doraemon1234@cluster0.zsj2ef2.mongodb.net/DailyJournal";
+dburl2='mongodb://127.0.0.1:27017/DailyJournal';
+
 
 const User = require('./model/user');
 passport.use(new LocalStrategy(User.authenticate()));
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
+const store = new MongoDBStore({
+    uri: dburl2,
+    collection: 'mySessions'
+  });
+  
+  // Catch errors
+  store.on('error', function(error) {
+    console.log(error);
+  });
+  
+
 app.use(session({
   secret: 'Secret Daily Journal',
-  resave: false,
+  resave: true,
   saveUninitialized: true,
-  cookie: {}
+  cookie: {},
+  store:store
 }))
 app.use(passport.session());
 
@@ -36,8 +53,6 @@ app.use(methodOverride('_method'));
 app.use(flash());
 app.use(locals);
 
-dburl1="mongodb+srv://cishika104:doraemon1234@cluster0.zsj2ef2.mongodb.net/DailyJournal";
-dburl2='mongodb://127.0.0.1:27017/DailyJournal';
 
 mongoose.connect(dburl2).then(()=>{
     console.log("db connected");
