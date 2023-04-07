@@ -70,5 +70,5 @@ app.get('/',(req,res)=>{
 
 
 app.listen(port,()=>{
-    console.log("Server Connected ar port "+port);
+    console.log("Server Connected at port "+port);
 })
