@@ -39,7 +39,7 @@ app.use(locals);
 dburl1="mongodb+srv://cishika104:doraemon1234@cluster0.zsj2ef2.mongodb.net/DailyJournal";
 dburl2='mongodb://127.0.0.1:27017/DailyJournal';
 
-mongoose.connect(dburl1).then(()=>{
+mongoose.connect(dburl2).then(()=>{
     console.log("db connected");
 }).catch(()=>{
     console.log(err);
