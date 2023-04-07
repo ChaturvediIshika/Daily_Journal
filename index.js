@@ -26,7 +26,8 @@ passport.deserializeUser(User.deserializeUser());
 
 const store = new MongoDBStore({
     uri: dburl2,
-    collection: 'mySessions'
+    collection: 'mySessions',
+    expires:60*60*1000*7*24
   });
   
   // Catch errors
