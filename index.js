@@ -23,7 +23,7 @@ mongoose.connect('mongodb://127.0.0.1:27017/DailyJournal').then(()=>{
 app.use(router);
 
 app.get('/',(req,res)=>{
-    res.send("sent");
+    res.redirect('/journal');
 })
 
 
