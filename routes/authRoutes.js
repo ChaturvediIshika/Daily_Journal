@@ -12,8 +12,12 @@ router.get('/login',(req,res)=>{
 })
 
 router.get('/logout',(req,res)=>{
-    req.logout();
-    res.redirect('/journal');
+    req.logout((e)=>{
+        if(e){
+            req.flash('error',e.message);
+        }
+        res.redirect('/journal');
+    });
 })
 
 router.post('/signup',async(req,res)=>{
@@ -28,6 +32,13 @@ router.post('/signup',async(req,res)=>{
         req.flash('err',err.message);
         res.redirect('/signup');
     }
+})
+
+router.post('/login',passport.authenticate('local',{
+    failureFlash:{type:'err'},
+    failureRedirect:'/login'
+}),(req,res)=>{
+    res.redirect('/journal');
 })
 
 
