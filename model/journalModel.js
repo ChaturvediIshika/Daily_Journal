@@ -8,6 +8,10 @@ const jSchema=new mongoose.Schema({
     pp:{
         type:String,
         required:true
+    },
+    creator:{
+        type:mongoose.Schema.Types.ObjectId,
+        ref:'User'
     }
 });
 

@@ -1,11 +1,11 @@
-<nav class="navbar navbar-expand-lg bg-body-tertiary">
+<nav class="navbar navbar-expand-lg" style="background-color: rgba(0, 0, 0, 0.2);">
     <div class="container">
     <a class="navbar-brand">Daily Journal</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav">
+        <ul class="navbar-nav me-auto">
         <li class="nav-item">
             <a class="nav-link h" aria-current="page" href="/journal">Home</a>
         </li>
@@ -20,6 +20,26 @@
         </li>
         
         </ul>
+        <%if(!user){%>
+            <ul class="navbar-nav d-flex">
+                <li class="nav-item">
+                    <a class="nav-link h" href="/signup">SignUp</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link h" href="/login">LogIn</a>
+                </li>
+            </ul>
+        <%}else{%>
+            <ul class="navbar-nav d-flex">
+                <li class="nav-item">
+                    <a class="nav-link h" href="#"><%=user.username%></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link h" href="/logout">LogOut</a>
+                </li>
+            </ul>
+        <%}%>
+        
     </div>
     </div>
 </nav>
