@@ -6,7 +6,9 @@
             
             <h2><%=p.postTitle%></h2>
             <p><%=p.pp.substring(0,400)%>... <a href="/journal/show/<%=p.id%>"> ReadMore</a></p>
+            <%if(p.creator){%>
             <p>@<%=p.creator.username%></p>
+            <%}%>
             
         </div>
     <%}%>
