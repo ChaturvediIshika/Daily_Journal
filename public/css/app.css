@@ -4,8 +4,4 @@
 .h:hover{
     color: aquamarine;
 }
-footer{
-    position: fixed;
-    bottom: 0;
-    width: 100%;
-}
+

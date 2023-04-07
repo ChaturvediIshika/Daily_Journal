@@ -6,6 +6,17 @@ const engine=require('ejs-mate');
 const mongoose=require('mongoose');
 const Journal=require('./model/journalModel')
 const methodOverride=require('method-override');
+const session=require('express-session');
+const flash=require('connect-flash');
+const {locals}=require('./middleware');
+const port=3000;
+
+app.use(session({
+  secret: 'Secret Daily Journal',
+  resave: false,
+  saveUninitialized: true,
+  cookie: {}
+}))
 
 app.engine('ejs',engine);
 app.set('view engine','ejs');
@@ -13,6 +24,8 @@ app.set('views',path.join(__dirname,'views'));
 app.use(express.static(path.join(__dirname,'public')));
 app.use(express.urlencoded({extended:true}));
 app.use(methodOverride('_method'));
+app.use(flash());
+app.use(locals);
 
 mongoose.connect('mongodb://127.0.0.1:27017/DailyJournal').then(()=>{
     console.log("db connected");
@@ -27,6 +40,6 @@ app.get('/',(req,res)=>{
 })
 
 
-app.listen(3000,()=>{
-    console.log("Server Connected");
+app.listen(port,()=>{
+    console.log("Server Connected ar port "+port);
 })
