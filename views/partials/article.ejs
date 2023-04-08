@@ -9,6 +9,10 @@
             <%if(p.creator){%>
             <p>@<%=p.creator.username%></p>
             <%}%>
+            <%if(p.creator&&user&&p.creator.id==user.id){%>
+                <a href="/journal/edit/<%=p.id%>"><button class="btn btn-secondary btn-sm">Edit</button></a>
+                <form class="d-inline-block" action="/journal/<%=p.id%>?_method=DELETE" method="POST"><button class="btn btn-secondary btn-sm">DELETE</button></form>
+            <%}%>
             
         </div>
     <%}%>
