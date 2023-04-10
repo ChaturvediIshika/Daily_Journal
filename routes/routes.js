@@ -34,10 +34,13 @@ router.post('/journal/compose',isLoggedIn,async(req,res)=>{
 router.get('/journal/show/:id',isLoggedIn,async(req,res)=>{
     try{
     const {id}=req.params;
-    const post=await Journal.findById(id).populate('creator');
+    const post=await Journal.findById(id);
+    await post.populate('creator');
+    await post.populate('reviews');
     res.render('journal/readMore',{post});
     }
     catch(err){
+        console.log(err);
         res.send(err);
     }
 })
