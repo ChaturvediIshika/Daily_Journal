@@ -1,4 +1,4 @@
-
+<% layout('layout/boilerplate')-%>
 <div class="container">
 
     <%for(let p of posts){%>
@@ -6,7 +6,6 @@
             
             <h2><%=p.postTitle%></h2>
             <p><%=p.pp.substring(0,400)%>... <a href="/journal/show/<%=p.id%>"> ReadMore</a></p>
-            <form action="/journal/saved/<%=p.id%>/add" method="post" class="d-inline"><button class="btn btn-primary">Save</button></form>
             <%if(p.creator){%>
             <p>@<%=p.creator.username%></p>
             <%}%>
@@ -14,7 +13,7 @@
                 <a href="/journal/edit/<%=p.id%>"><button class="btn btn-secondary btn-sm">Edit</button></a>
                 <form class="d-inline-block" action="/journal/<%=p.id%>?_method=DELETE" method="POST"><button class="btn btn-secondary btn-sm">DELETE</button></form>
             <%}%>
-            
+            <form action="/journal/saved/<%=p.id%>?_method=delete" method="post"><button class="btn btn-danger">Remove from Saved</button></form>
         </div>
     <%}%>
 </div>

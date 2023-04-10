@@ -12,7 +12,11 @@ const jSchema=new mongoose.Schema({
     creator:{
         type:mongoose.Schema.Types.ObjectId,
         ref:'User'
-    }
+    },
+    reviews:[{
+        type:mongoose.Schema.Types.ObjectId,
+        ref:'Review'
+    }]
 });
 
 const Journal=mongoose.model("Journal",jSchema);
