@@ -13,6 +13,7 @@ const jSchema=new mongoose.Schema({
         type:mongoose.Schema.Types.ObjectId,
         ref:'User'
     },
+    date:String,
     reviews:[{
         type:mongoose.Schema.Types.ObjectId,
         ref:'Review'

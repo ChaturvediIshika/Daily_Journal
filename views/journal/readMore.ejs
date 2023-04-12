@@ -1,9 +1,12 @@
 <% layout('layout/boilerplate')-%>
-<div class="container">
+<div class="container border border-secondary p-3">
     <h1><%=post.postTitle%></h1>
+    <% if( post.creator) {%>
+      <p>@<%=post.creator.username%></p>
+    <%}%>
+    <%=post.date%>
     <p><%=post.pp%></p>
     <% if( post.creator) {%>
-    <p>@<%=post.creator.username%></p>
     <%if(post.creator.id==user.id){%>
     <a href="/journal/edit/<%=post.id%>"><button class="btn btn-secondary btn-sm">Edit</button></a>
     <form class="d-inline-block" action="/journal/<%=post.id%>?_method=DELETE" method="POST"><button class="btn btn-secondary btn-sm">DELETE</button></form>

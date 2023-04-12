@@ -8,9 +8,18 @@ const home="Lorem Ipsum is simply dummy text of the printing and typesetting ind
 // posts.push({postTitle:"home",pp:home});
 
 router.get('/journal',async(req,res)=>{
-    const posts=await Journal.find({}).populate('creator');
+    var posts=await Journal.find({}).populate('creator');
+    shuffleArray(posts);
     res.render('journal/index',{posts});
 })
+function shuffleArray(array) {
+    for (var i = array.length - 1; i > 0; i--) {
+        var j = Math.floor(Math.random() * (i + 1));
+        var temp = array[i];
+        array[i] = array[j];
+        array[j] = temp;
+    }
+}
 
 router.get('/journal/about',(req,res)=>{
     res.render('journal/about',{home});
@@ -26,7 +35,8 @@ router.get('/journal/compose',isLoggedIn,(req,res)=>{
 
 router.post('/journal/compose',isLoggedIn,async(req,res)=>{
     const {postTitle,pp}=req.body;
-    await Journal.create({postTitle,pp,'creator':req.user.id});
+    const date=new Date().toLocaleDateString();
+    await Journal.create({postTitle,pp,'creator':req.user.id,date});
     req.flash('msg','Journal Added Successfully');
     res.redirect('/journal');
 })
@@ -54,7 +64,8 @@ router.get('/journal/edit/:id',isLoggedIn,async(req,res)=>{
 router.post('/journal/edit/:id',isLoggedIn,async(req,res)=>{
     const {id}=req.params;
     const {postTitle,pp}=req.body;
-    await Journal.findByIdAndUpdate(id,{postTitle,pp});
+    const date=new Date().toLocaleDateString();
+    await Journal.findByIdAndUpdate(id,{postTitle,pp,date});
     req.flash('msg','update successful');
     res.redirect(`/journal/show/${id}`);
 })
