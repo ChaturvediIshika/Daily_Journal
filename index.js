@@ -16,6 +16,7 @@ const LocalStrategy=require('passport-local');
 const MongoDBStore = require('express-mongodb-session')(session);
 const reviewRoutes=require('./routes/reviewsRoutes');
 const userRoutes=require('./routes/userRoutes');
+const profileRoutes=require('./routes/profileRoutes');
 
 dburl="mongodb+srv://cishika104:doraemon1234@cluster0.zsj2ef2.mongodb.net/DailyJournal";
 dburl2='mongodb://127.0.0.1:27017/DailyJournal';
@@ -27,7 +28,7 @@ passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
 const store = new MongoDBStore({
-    uri: dburl2,
+    uri: dburl,
     collection: 'mySessions',
     expires:60*60*1000*7*24
   });
@@ -57,7 +58,7 @@ app.use(flash());
 app.use(locals);
 
 
-mongoose.connect(dburl2).then(()=>{
+mongoose.connect(dburl).then(()=>{
     console.log("db connected");
 }).catch((err)=>{
     console.log(err); 
@@ -67,6 +68,7 @@ app.use(router);
 app.use(authRoutes);
 app.use(reviewRoutes);
 app.use(userRoutes);
+app.use(profileRoutes);
 
 app.get('/',(req,res)=>{
     res.redirect('/journal');

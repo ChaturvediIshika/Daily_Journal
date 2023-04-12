@@ -11,11 +11,11 @@
             </div>
             <div class="mb-3">
                 <label class="form-label" for="password">Password:</label>
-                <input class="form-control" type="password" name="password" id="password" required>
+                <input class="form-control" type="password" name="password" id="password" required pattern=".{5,}" title="Five or more characters">
             </div>
             <div class="mb-3">
                 <label class="form-label" for="email">Email:</label>
-                <input class="form-control" type="email" name="email" id="email" required>
+                <input class="form-control" type="email" name="email" id="email" required  pattern="^[a-z0-9A-Z]{2,}.+@gmail.com$" title="Fill in Correct e-mail">
             </div>
             
             <button type="submit" class="btn btn-dark">SignUp</button>
