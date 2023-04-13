@@ -24,7 +24,7 @@ router.post('/signup',async(req,res)=>{
     try{
         const {username,password,email}=req.body;
         const user=await new User({username,email});
-        User.register(user,password);
+        await User.register(user,password);
         req.flash('msg','Account Created Successfully');
         res.redirect('/login');
     }
