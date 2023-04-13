@@ -8,7 +8,12 @@ const User = new Schema({
     saved:[{
         type:mongoose.Schema.Types.ObjectId,
         ref:'Journal'
-    }]
+    }],
+    image:{type:String,
+        default:"https://www.freeiconspng.com/thumbs/no-image-icon/no-image-icon-6.png"},
+    bio:String,
+    Name:String,
+    Address:String
 });
 
 User.plugin(passportLocalMongoose);

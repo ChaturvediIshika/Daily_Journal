@@ -1,6 +1,6 @@
 <%layout('layout/boilerplate')-%>
 
-<h1>Compose</h1>
+<h1>Edit</h1>
 <form action="/journal/edit/<%=post.id%>" method="POST">
     <label class="form-label" for="postTitle">Title</label>
     <input class="form-control" type="text" name="postTitle" id="postTitle" value="<%=post.postTitle%>">

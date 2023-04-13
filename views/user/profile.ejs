@@ -1,2 +1,23 @@
 <%layout('layout/boilerplate')-%>
-<%=profile%>
+
+<div class="row">
+    <div class="col-lg-6">
+        <div class="card mt-5 pt-3 d-flex align-items-center" style="width: 18rem;">
+            <img src="<%=profile.image%>" class="card-img-top image" alt="...">
+            <div class="card-body">
+            <h5 class="card-title"><%=profile.username%></h5>
+            <h6 class="card-text"><%=profile.name%></h6>
+            <p class="card-text"><%=profile.email%></p>
+            <p class="card-text"><%=profile.bio%></p>
+            <p class="card-text"><%=profile.Address%></p>
+            <%if(profile.id==user.id){%>
+            <a href="/profile/edit/<%=profile.id%>" class="btn btn-primary">Edit</a>
+            <%}%>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-6">
+        <h3>Posts</h3>
+        <%-include('../partials/article')%>
+    </div>
+</div>
