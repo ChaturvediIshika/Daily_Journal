@@ -19,7 +19,7 @@ router.post('/profile/edit/:username',async(req,res)=>{
     const {name,email,image,bio,Address}=req.body;
     // console.log({name,email,image,bio,Address});
     await User.findByIdAndUpdate(req.user.id,{name,email,image,bio,Address});
-    res.redirect('/profile/'+req.user.username);
+    res.redirect('/profile/'+req.user.id);
 })
-
+ 
 module.exports=router;
