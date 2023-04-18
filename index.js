@@ -28,7 +28,7 @@ passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
 const store = new MongoDBStore({
-    uri: dburl,
+    uri: dburl2,
     collection: 'mySessions',
     expires:60*60*1000*7*24
   });
@@ -58,7 +58,7 @@ app.use(flash());
 app.use(locals);
 
 
-mongoose.connect(dburl).then(()=>{
+mongoose.connect(dburl2).then(()=>{
     console.log("db connected");
 }).catch((err)=>{
     console.log(err); 

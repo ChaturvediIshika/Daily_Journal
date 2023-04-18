@@ -1,5 +1,22 @@
 <% layout('layout/boilerplate')-%>
-<div class="container">
-    <h1>CONTACT</h1>
-    <p><%=home%></p>
+<div class="row">
+    <div class="col-lg-6 mx-auto">
+        <br>
+        <h1 id="h1">GET IN TOUCH</h1><br>
+        <form action="" method="POST">
+            <div class="mb-3">
+                <label class="form-label" for="username">UserName:</label>
+                <input class="form-control" type="text" name="username" id="nameBox" required>
+            </div>
+            <div class="mb-3">
+                <label class="form-label" for="email">Email:</label>
+                <input class="form-control" type="email" name="email" id="emailBox" required>
+            </div>
+            <div class="mb-3">
+                <label class="form-label" for="message">Message:</label>
+                <textarea class="form-control" type="message" name="message" id="msgBox" required></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary button">Send Message</button>
+        </form>
+    </div>
 </div>
