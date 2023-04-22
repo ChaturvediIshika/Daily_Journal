@@ -2,6 +2,7 @@ const express=require('express');
 const router=express.Router();
 const {isLoggedIn}=require('../middleware');
 const User=require('../model/user');
+const Journal=require('../model/journalModel');
 
 
 router.get('/user',isLoggedIn,(req,res)=>{
@@ -21,7 +22,9 @@ router.post('/journal/saved/:pid/add',isLoggedIn,async(req,res)=>{
 router.get('/saved',isLoggedIn,async(req,res)=>{
     const user=req.user;
     await user.populate('saved');
+    // await user.populate('creator');
     const posts=user.saved;
+    console.log(posts);
     res.render('user/saved',{posts});
 })  
 

@@ -3,7 +3,6 @@ const db=getDatabase();
 
 var nameV,emailV,msgV;
 
-console.log("sabojd[qwk");
 console.log(document.getElementById('h1'));
 
 var nameBox=document.getElementById('nameBox');

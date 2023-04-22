@@ -2,14 +2,14 @@
 <div class="container">
 
     <%for(let p of posts){%>
-        <div class="mt-2 mb-2 border border-secondary p-3">
+        <div class="p-3 article m-3 arti">
             
-            <h2><%=p.postTitle%></h2>
+            <h2 class="artih2"><u><%=p.postTitle%></u></h2>
             <%if(p.creator){%>
-                <a href="/profile/<%=p.creator.id%>"><p>@<%=p.creator.username%></p></a>
+                <a class="artia" href="/profile/<%=p.creator.id%>"><p>@<%=p.creator.username%></p></a>
             <%}%>
             <%=p.date%>
-            <p><%=p.pp.substring(0,400)%>... <a href="/journal/show/<%=p.id%>"> ReadMore</a></p>
+            <p class="artip"><%=p.pp.substring(0,400)%>... <a href="/journal/show/<%=p.id%>"> ReadMore</a></p>
             <form action="/journal/saved/<%=p.id%>/add" method="post" class="d-inline"><button class="btn btn-primary">Save</button></form>
             
             <%if(p.creator&&user&&p.creator.id==user.id){%>
