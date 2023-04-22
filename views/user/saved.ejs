@@ -14,7 +14,7 @@
                 <a href="/journal/edit/<%=p.id%>"><button class="btn btn-secondary btn-sm">Edit</button></a>
                 <form class="d-inline-block" action="/journal/<%=p.id%>?_method=DELETE" method="POST"><button class="btn btn-secondary btn-sm">DELETE</button></form>
             <%}%>
-            <form action="/journal/saved/<%=p.id%>?_method=delete" method="post"><button class="btn btn-danger">Remove from Saved</button></form>
+            <form class="d-inline-block" action="/journal/saved/<%=p.id%>?_method=delete" method="post"><button class="btn btn-danger">Remove from Saved</button></form>
         </div>
     <%}%>
 </div>

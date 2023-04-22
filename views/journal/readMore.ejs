@@ -1,5 +1,6 @@
 <% layout('layout/boilerplate')-%>
-<div class="container border border-secondary p-3">
+<div class="row mt-5">
+<div class="container border border-secondary p-3 arti article col-lg-4">
     <h1><%=post.postTitle%></h1>
     <% if( post.creator) {%>
       <p>@<%=post.creator.username%></p>
@@ -16,17 +17,20 @@
 </div>
 <% if( post.creator) {%>
     <div class="col-lg-4">
-      <h2> Author </h2>
-      <div class="card" style="width: 18rem">
-        <img src="<%=post.creator.img%>" class="card-img-top" alt="..." />
+      <div class="card pt-3 d-flex align-items-center" style="width: 18rem;">
+        <h2> Author </h2>
+        <img src="<%=post.creator.image%>" class="card-img-top image" alt="..." />
         <div class="card-body">
           <h5 class="card-title"><%=post.creator.username%></h5>
-          <p class="card-text">Email: <%=post.creator.email%></p>
-          <p class="card-text">Contact No: <%=post.creator.contact%></p>
+          <h6 class="card-text"><%=post.creator.Name%></h6>
+          <p class="card-text"><%=post.creator.email%></p>
+            <p class="card-text"><%=post.creator.bio%></p>
+            <p class="card-text"><%=post.creator.Address%></p>
         </div>
       </div>
   </div>
   <%}%>
+
     <div class="card col-lg-4">
       <div class="card-body">
         <form action="/journal/<%=post.id%>/review" method="post">
@@ -71,3 +75,4 @@
       </div>
     </div>
   </div>
+</div>
