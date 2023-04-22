@@ -22,9 +22,10 @@ router.post('/journal/saved/:pid/add',isLoggedIn,async(req,res)=>{
 router.get('/saved',isLoggedIn,async(req,res)=>{
     const user=req.user;
     await user.populate('saved');
-    // await user.populate('creator');
+    for(let p of user.saved){
+        await p.populate('creator');
+    }
     const posts=user.saved;
-    console.log(posts);
     res.render('user/saved',{posts});
 })  
 
