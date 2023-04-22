@@ -35,4 +35,4 @@ function clearform(){
     msgBox.value="";
 }
 
-document.querySelectorAll(".button")[0].onclick=insertData;
+document.getElementById("contactbtn").onclick=insertData;
