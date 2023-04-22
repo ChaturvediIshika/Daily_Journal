@@ -3,8 +3,11 @@ const db=getDatabase();
 
 var nameV,emailV,msgV;
 
+<<<<<<< HEAD
 console.log(document.getElementById('h1'));
 
+=======
+>>>>>>> 97b677f193922a72c906fc73f79e9767d5d9a899
 var nameBox=document.getElementById('nameBox');
 var emailBox=document.getElementById('emailBox');
 var msgBox=document.getElementById('msgBox');
