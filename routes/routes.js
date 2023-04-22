@@ -1,13 +1,9 @@
-
 const express=require('express');
 const router=express.Router();
 const mongoose=require('mongoose');
 const { isLoggedIn } = require('../middleware');
 const Journal=require('../model/journalModel');
 
-
-const home="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.";
-// posts.push({postTitle:"home",pp:home});
 
 router.get('/journal',async(req,res)=>{
     var posts=await Journal.find({}).populate('creator');
@@ -24,11 +20,11 @@ function shuffleArray(array) {
 }
 
 router.get('/journal/about',(req,res)=>{
-    res.render('journal/about',{home});
+    res.render('journal/about');
 })
 
 router.get('/journal/contact',(req,res)=>{
-    res.render('journal/contact',{home});
+    res.render('journal/contact');
 })
 
 router.post('/journal/contact',(req,res)=>{
