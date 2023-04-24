@@ -18,8 +18,8 @@ const reviewRoutes=require('./routes/reviewsRoutes');
 const userRoutes=require('./routes/userRoutes');
 const profileRoutes=require('./routes/profileRoutes');
 
-dburl="mongodb+srv://cishika104:doraemon1234@cluster0.zsj2ef2.mongodb.net/DailyJournal";
-dburl2='mongodb://127.0.0.1:27017/DailyJournal';
+dburl2="mongodb+srv://cishika104:doraemon1234@cluster0.zsj2ef2.mongodb.net/DailyJournal";
+dburl='mongodb://127.0.0.1:27017/DailyJournal';
 
 
 const User = require('./model/user');

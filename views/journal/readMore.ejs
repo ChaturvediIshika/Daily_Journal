@@ -9,8 +9,8 @@
     <p><%=post.pp%></p>
     <% if( post.creator) {%>
     <%if(post.creator.id==user.id){%>
-    <a href="/journal/edit/<%=post.id%>"><button class="btn btn-secondary btn-sm">Edit</button></a>
-    <form class="d-inline-block" action="/journal/<%=post.id%>?_method=DELETE" method="POST"><button class="btn btn-secondary btn-sm">DELETE</button></form>
+    <a href="/journal/edit/<%=post.id%>"><button class="btn btn-secondary">Edit</button></a>
+    <form class="d-inline-block" action="/journal/<%=post.id%>?_method=DELETE" method="POST"><button class="btn btn-danger">DELETE</button></form>
     <%}%>
     <%}%>
     <form action="/journal/saved/<%=post.id%>/add" method="post" class="d-inline"><button class="btn btn-primary">Save</button></form>
