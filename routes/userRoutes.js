@@ -35,7 +35,7 @@ router.delete('/journal/saved/:pid',isLoggedIn,async(req,res)=>{
     const user=await User.findById(uid);
     user.saved=user.saved.filter((p)=>p!=pid);
     await user.save();
-    req.flash('err','product removed from saved');
+    req.flash('err','post removed from saved');
     res.redirect('/saved');
 })
 
