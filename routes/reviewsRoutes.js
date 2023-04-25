@@ -22,7 +22,7 @@ router.delete('/journal/:prdid/reviews/:rvid',isLoggedIn,async(req,res)=>{
     const journal=await journals.findById(prdid);
     journal.reviews=journal.reviews.filter((id)=>id!=rvid);
     await journal.save();
-    res.redirect('/journals/'+prdid);
+    res.redirect('/journal/show/'+prdid);
 })
 
 module.exports=router;
